@@ -9,7 +9,7 @@
   },
   "lint-staged": {
     "*.dart": [
-      "fvm flutter format"
+      "fvm dart format"
     ],
     "*.@(json|yaml)": [
       "prettier --write"
