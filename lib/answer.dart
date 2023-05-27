@@ -4,9 +4,8 @@ part 'answer.g.dart';
 @riverpod
 class AnswerNotifier extends _$AnswerNotifier {
   @override
-  int build() {
-    // 最初のデータ
-    return 777;
+  int? build() {
+    return null;
   }
 
   void transNum(String roman) {

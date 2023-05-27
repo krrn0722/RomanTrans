@@ -22,7 +22,7 @@ class CalculatePage extends HookConsumerWidget {
             ),
             TextField(
               controller: controller,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                   border: InputBorder.none, hintText: '整数を入力して'),
             ),
             ElevatedButton(
@@ -30,7 +30,11 @@ class CalculatePage extends HookConsumerWidget {
                   ansNotifier.transNum(controller.text);
                 },
                 child: Text('計算')),
-            Text('$ansProvider'),
+            //数字がヌルの場合は空のコンテナ
+            switch (ansProvider) {
+              int() => Text('$ansProvider'),
+              null => SizedBox(),
+            }
           ],
         ),
       ),
