@@ -15,7 +15,10 @@ class CalculatePage extends HookConsumerWidget {
     final ansNotifier = ref.read(answerNotifierProvider.notifier);
     final errorProvider = ref.watch(errorNotifierProvider);
     return Scaffold(
-      body: Center(
+        body: GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -66,6 +69,6 @@ class CalculatePage extends HookConsumerWidget {
           ],
         ),
       ),
-    );
+    ));
   }
 }
