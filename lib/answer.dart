@@ -62,7 +62,9 @@ class AnswerNotifier extends _$AnswerNotifier {
             return;
           }
           i++;
-        } else if (roman[i + 1] == 'M') {
+        }
+        //Mのとき
+        else if (roman[i + 1] == 'M') {
           sum += rSymProvider.M - rSymProvider.C;
           if (roman[i + 2] == 'M' ||
               roman[i + 2] == 'D' ||
@@ -196,16 +198,18 @@ class AnswerNotifier extends _$AnswerNotifier {
         return;
       }
       //４回以上繰り返すと
-      if (mTimes > 4 ||
-          dTimes > 4 ||
-          cTimes > 4 ||
-          lTimes > 4 ||
-          xTimes > 4 ||
-          vTimes > 4 ||
-          iTimes > 4) {
+      print(mTimes);
+      if (mTimes >= 4 ||
+          dTimes >= 4 ||
+          cTimes >= 4 ||
+          lTimes >= 4 ||
+          xTimes >= 4 ||
+          vTimes >= 4 ||
+          iTimes >= 4) {
         //#TODO エラー文表示
         print('異常表');
         state = null;
+        return;
       }
     }
     state = sum;
