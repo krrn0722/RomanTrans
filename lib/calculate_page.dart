@@ -33,7 +33,9 @@ class CalculatePage extends HookConsumerWidget {
               child: TextField(
                 controller: controller,
                 decoration: const InputDecoration(
-                    border: OutlineInputBorder(), hintText: 'ローマ数字を入力してください'),
+                    border: OutlineInputBorder(),
+                    hintText: 'ローマ数字を入力してください',
+                    hintStyle: TextStyle(fontSize: 20)),
                 style: const TextStyle(fontSize: 30),
                 maxLength: 21,
               ),
@@ -62,8 +64,13 @@ class CalculatePage extends HookConsumerWidget {
               child: switch (ansProvider) {
                 int() =>
                   Text('$ansProvider', style: const TextStyle(fontSize: 30)),
-                null =>
-                  Text('$errorProvider', style: const TextStyle(fontSize: 30)),
+                null => SingleChildScrollView(
+                    child: Text(
+                      '$errorProvider',
+                      style: const TextStyle(fontSize: 20),
+                      overflow: TextOverflow.visible,
+                    ),
+                  ),
               },
             )
           ],
