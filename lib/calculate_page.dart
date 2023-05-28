@@ -15,6 +15,10 @@ class CalculatePage extends HookConsumerWidget {
     final ansNotifier = ref.read(answerNotifierProvider.notifier);
     final errorProvider = ref.watch(errorNotifierProvider);
     final l10n = useL10n();
+    final screenSize = MediaQuery.of(context).size;
+    //iPhone12基準
+    final widthRatio = screenSize.width / 390;
+
     return Scaffold(
         body: GestureDetector(
       behavior: HitTestBehavior.opaque,
@@ -30,7 +34,7 @@ class CalculatePage extends HookConsumerWidget {
             ),
             const SizedBox(height: 10),
             SizedBox(
-              width: 300,
+              width: 300 * widthRatio,
               child: TextField(
                 controller: controller,
                 decoration: InputDecoration(
@@ -43,12 +47,12 @@ class CalculatePage extends HookConsumerWidget {
             ),
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                    fixedSize: const Size.fromWidth(200)),
+                    fixedSize: Size.fromWidth(200 * widthRatio)),
                 onPressed: () {
                   ansNotifier.transNum(controller.text);
                 },
                 child: Text(l10n.translate)),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
             Text(l10n.result,
                 style: const TextStyle(
                     fontSize: 20, color: Color.fromARGB(200, 40, 40, 40))),
@@ -59,7 +63,7 @@ class CalculatePage extends HookConsumerWidget {
                 border: Border.all(color: Colors.grey),
                 borderRadius: BorderRadius.circular(5),
               ),
-              width: 300,
+              width: 300 * widthRatio,
               height: 80,
               padding: EdgeInsets.all(20),
               child: switch (ansProvider) {
