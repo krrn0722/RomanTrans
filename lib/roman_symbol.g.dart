@@ -1,25 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'answer.dart';
+part of 'roman_symbol.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$answerNotifierHash() => r'621c74f9d5411dd1fc8b6ae06c73b3756695d100';
+String _$romanSymbolNotifierHash() =>
+    r'0cb3394c451fabf95124727d6f2504f5d82ab85b';
 
-/// See also [AnswerNotifier].
-@ProviderFor(AnswerNotifier)
-final answerNotifierProvider =
-    AutoDisposeNotifierProvider<AnswerNotifier, int?>.internal(
-  AnswerNotifier.new,
-  name: r'answerNotifierProvider',
+/// See also [RomanSymbolNotifier].
+@ProviderFor(RomanSymbolNotifier)
+final romanSymbolNotifierProvider =
+    AutoDisposeNotifierProvider<RomanSymbolNotifier, RomanSymbol>.internal(
+  RomanSymbolNotifier.new,
+  name: r'romanSymbolNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$answerNotifierHash,
+      : _$romanSymbolNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$AnswerNotifier = AutoDisposeNotifier<int?>;
+typedef _$RomanSymbolNotifier = AutoDisposeNotifier<RomanSymbol>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
