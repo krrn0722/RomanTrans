@@ -19,14 +19,23 @@ class AnswerNotifier extends _$AnswerNotifier {
     }
     int sum = 0;
     int len = roman.length;
+    int mTimes = 0,
+        dTimes = 0,
+        cTimes = 0,
+        lTimes = 0,
+        xTimes = 0,
+        vTimes = 0,
+        iTimes = 0;
     //最後尾に空白を追加
     roman = roman.padRight(len + 1);
+    roman = roman.padRight(len + 2);
 
     //１文字づづ見ていく
     for (int i = 0; i < len; i++) {
       //Mのとき
       if (roman[i] == 'M') {
         sum += rSymProvider.M;
+        mTimes++;
       }
       //Dのとき
       else if (roman[i] == 'D') {
@@ -37,18 +46,36 @@ class AnswerNotifier extends _$AnswerNotifier {
           return;
         } else {
           sum += rSymProvider.D;
+          dTimes++;
         }
       }
       //Cのとき
       else if (roman[i] == 'C') {
         if (roman[i + 1] == 'D') {
           sum += rSymProvider.D - rSymProvider.C;
+          if (roman[i + 2] == 'C' ||
+              roman[i + 2] == 'M' ||
+              roman[i + 2] == 'D') {
+            //#TODO エラー文表示
+            print('異常表');
+            state = null;
+            return;
+          }
           i++;
         } else if (roman[i + 1] == 'M') {
           sum += rSymProvider.M - rSymProvider.C;
+          if (roman[i + 2] == 'M' ||
+              roman[i + 2] == 'D' ||
+              roman[i + 2] == 'C') {
+            //#TODO エラー文表示
+            print('異常表');
+            state = null;
+            return;
+          }
           i++;
         } else {
           sum += rSymProvider.C;
+          cTimes++;
         }
       }
       //Lのとき
@@ -60,6 +87,7 @@ class AnswerNotifier extends _$AnswerNotifier {
           return;
         } else {
           sum += rSymProvider.L;
+          lTimes++;
         }
       }
       //Xのとき
@@ -71,12 +99,33 @@ class AnswerNotifier extends _$AnswerNotifier {
           return;
         } else if (roman[i + 1] == 'L') {
           sum += rSymProvider.L - rSymProvider.X;
+          if (roman[i + 2] == 'X' ||
+              roman[i + 2] == 'L' ||
+              roman[i + 2] == 'C' ||
+              roman[i + 2] == 'D' ||
+              roman[i + 2] == 'M') {
+            //#TODO エラー文表示
+            print('異常表');
+            state = null;
+            return;
+          }
           i++;
         } else if (roman[i + 1] == 'C') {
           sum += rSymProvider.C - rSymProvider.X;
+          if (roman[i + 2] == 'X' ||
+              roman[i + 2] == 'L' ||
+              roman[i + 2] == 'C' ||
+              roman[i + 2] == 'D' ||
+              roman[i + 2] == 'M') {
+            //#TODO エラー文表示
+            print('異常表');
+            state = null;
+            return;
+          }
           i++;
         } else {
           sum += rSymProvider.X;
+          xTimes++;
         }
       }
       //Vのとき
@@ -92,6 +141,7 @@ class AnswerNotifier extends _$AnswerNotifier {
           return;
         } else {
           sum += rSymProvider.V;
+          vTimes++;
         }
       }
       //Iのとき
@@ -106,9 +156,33 @@ class AnswerNotifier extends _$AnswerNotifier {
           return;
         } else if (roman[i + 1] == 'V') {
           sum += rSymProvider.V - rSymProvider.I;
+          if (roman[i + 2] == 'I' ||
+              roman[i + 2] == 'V' ||
+              roman[i + 2] == 'X' ||
+              roman[i + 2] == 'L' ||
+              roman[i + 2] == 'C' ||
+              roman[i + 2] == 'D' ||
+              roman[i + 2] == 'M') {
+            //#TODO エラー文表示
+            print('異常表');
+            state = null;
+            return;
+          }
           i++;
         } else if (roman[i + 1] == 'X') {
           sum += rSymProvider.X - rSymProvider.I;
+          if (roman[i + 2] == 'I' ||
+              roman[i + 2] == 'V' ||
+              roman[i + 2] == 'X' ||
+              roman[i + 2] == 'L' ||
+              roman[i + 2] == 'C' ||
+              roman[i + 2] == 'D' ||
+              roman[i + 2] == 'M') {
+            //#TODO エラー文表示
+            print('異常表');
+            state = null;
+            return;
+          }
           i++;
         } else {
           sum += rSymProvider.I;
@@ -121,7 +195,18 @@ class AnswerNotifier extends _$AnswerNotifier {
         state = null;
         return;
       }
-      //最後の文字だけ次の文字を確認しない
+      //４回以上繰り返すと
+      if (mTimes > 4 ||
+          dTimes > 4 ||
+          cTimes > 4 ||
+          lTimes > 4 ||
+          xTimes > 4 ||
+          vTimes > 4 ||
+          iTimes > 4) {
+        //#TODO エラー文表示
+        print('異常表');
+        state = null;
+      }
     }
     state = sum;
   }
