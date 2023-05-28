@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:roman_num/answer.dart';
 import 'package:roman_num/error.dart';
+import 'package:roman_num/use_l10n.dart';
 
 class CalculatePage extends HookConsumerWidget {
   const CalculatePage({super.key});
@@ -14,6 +14,7 @@ class CalculatePage extends HookConsumerWidget {
     final ansProvider = ref.watch(answerNotifierProvider);
     final ansNotifier = ref.read(answerNotifierProvider.notifier);
     final errorProvider = ref.watch(errorNotifierProvider);
+    final l10n = useL10n();
     return Scaffold(
         body: GestureDetector(
       behavior: HitTestBehavior.opaque,
@@ -23,7 +24,7 @@ class CalculatePage extends HookConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'ローマ数字',
+              l10n.romanNum,
               style: const TextStyle(
                   fontSize: 20, color: Color.fromARGB(200, 40, 40, 40)),
             ),
@@ -32,10 +33,10 @@ class CalculatePage extends HookConsumerWidget {
               width: 300,
               child: TextField(
                 controller: controller,
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'ローマ数字を入力してください',
-                    hintStyle: TextStyle(fontSize: 20)),
+                decoration: InputDecoration(
+                    border: const OutlineInputBorder(),
+                    hintText: l10n.enterRomanNum,
+                    hintStyle: const TextStyle(fontSize: 20)),
                 style: const TextStyle(fontSize: 30),
                 maxLength: 21,
               ),
@@ -46,9 +47,9 @@ class CalculatePage extends HookConsumerWidget {
                 onPressed: () {
                   ansNotifier.transNum(controller.text);
                 },
-                child: Text('変換')),
+                child: Text(l10n.translate)),
             SizedBox(height: 40),
-            Text('結果',
+            Text(l10n.result,
                 style: const TextStyle(
                     fontSize: 20, color: Color.fromARGB(200, 40, 40, 40))),
             //数字がヌルの場合はエラー文

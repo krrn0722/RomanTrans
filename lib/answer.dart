@@ -1,4 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:roman_num/error.dart';
 import 'package:roman_num/roman_symbol.dart';
 part 'answer.g.dart';
 
@@ -12,6 +13,7 @@ class AnswerNotifier extends _$AnswerNotifier {
   late final rSymProvider = ref.watch(romanSymbolNotifierProvider);
 
   void transNum(String roman) {
+    final errorNotifier = ref.read(errorNotifierProvider.notifier);
     //空ならnull
     if (roman.isEmpty) {
       state = null;
@@ -40,8 +42,8 @@ class AnswerNotifier extends _$AnswerNotifier {
       //Dのとき
       else if (roman[i] == 'D') {
         if (roman[i + 1] == 'M') {
-          //#TODO エラー文表示
-          print('異常表');
+          //異常表が起こった場合のエラー
+          errorNotifier.assign('規則に反するローマ数字です');
           state = null;
           return;
         } else {
@@ -56,8 +58,8 @@ class AnswerNotifier extends _$AnswerNotifier {
           if (roman[i + 2] == 'C' ||
               roman[i + 2] == 'M' ||
               roman[i + 2] == 'D') {
-            //#TODO エラー文表示
-            print('異常表');
+            //異常表が起こった場合のエラー
+            errorNotifier.assign('規則に反するローマ数字です');
             state = null;
             return;
           }
@@ -69,8 +71,8 @@ class AnswerNotifier extends _$AnswerNotifier {
           if (roman[i + 2] == 'M' ||
               roman[i + 2] == 'D' ||
               roman[i + 2] == 'C') {
-            //#TODO エラー文表示
-            print('異常表');
+            //異常表が起こった場合のエラー
+            errorNotifier.assign('規則に反するローマ数字です');
             state = null;
             return;
           }
@@ -83,8 +85,8 @@ class AnswerNotifier extends _$AnswerNotifier {
       //Lのとき
       else if (roman[i] == 'L') {
         if (roman[i + 1] == 'C' || roman[i + 1] == 'D' || roman[i + 1] == 'M') {
-          //#TODO エラー文表示
-          print('異常表');
+          //異常表が起こった場合のエラー
+          errorNotifier.assign('規則に反するローマ数字です');
           state = null;
           return;
         } else {
@@ -95,8 +97,8 @@ class AnswerNotifier extends _$AnswerNotifier {
       //Xのとき
       else if (roman[i] == 'X') {
         if (roman[i + 1] == 'D' || roman[i + 1] == 'M') {
-          //#TODO エラー文表示
-          print('異常表');
+          //異常表が起こった場合のエラー
+          errorNotifier.assign('規則に反するローマ数字です');
           state = null;
           return;
         } else if (roman[i + 1] == 'L') {
@@ -106,8 +108,8 @@ class AnswerNotifier extends _$AnswerNotifier {
               roman[i + 2] == 'C' ||
               roman[i + 2] == 'D' ||
               roman[i + 2] == 'M') {
-            //#TODO エラー文表示
-            print('異常表');
+            //異常表が起こった場合のエラー
+            errorNotifier.assign('規則に反するローマ数字です');
             state = null;
             return;
           }
@@ -119,8 +121,8 @@ class AnswerNotifier extends _$AnswerNotifier {
               roman[i + 2] == 'C' ||
               roman[i + 2] == 'D' ||
               roman[i + 2] == 'M') {
-            //#TODO エラー文表示
-            print('異常表');
+            //異常表が起こった場合のエラー
+            errorNotifier.assign('規則に反するローマ数字です');
             state = null;
             return;
           }
@@ -137,8 +139,8 @@ class AnswerNotifier extends _$AnswerNotifier {
             roman[i + 1] == 'C' ||
             roman[i + 1] == 'D' ||
             roman[i + 1] == 'M') {
-          //#TODO エラー文表示
-          print('異常表');
+          //異常表が起こった場合のエラー
+          errorNotifier.assign('規則に反するローマ数字です');
           state = null;
           return;
         } else {
@@ -152,8 +154,8 @@ class AnswerNotifier extends _$AnswerNotifier {
             roman[i + 1] == 'C' ||
             roman[i + 1] == 'D' ||
             roman[i + 1] == 'M') {
-          //#TODO エラー文表示
-          print('異常表');
+          //異常表が起こった場合のエラー
+          errorNotifier.assign('規則に反するローマ数字です');
           state = null;
           return;
         } else if (roman[i + 1] == 'V') {
@@ -165,8 +167,8 @@ class AnswerNotifier extends _$AnswerNotifier {
               roman[i + 2] == 'C' ||
               roman[i + 2] == 'D' ||
               roman[i + 2] == 'M') {
-            //#TODO エラー文表示
-            print('異常表');
+            //異常表が起こった場合のエラー
+            errorNotifier.assign('規則に反するローマ数字です');
             state = null;
             return;
           }
@@ -180,7 +182,8 @@ class AnswerNotifier extends _$AnswerNotifier {
               roman[i + 2] == 'C' ||
               roman[i + 2] == 'D' ||
               roman[i + 2] == 'M') {
-            //#TODO エラー文表示
+            //異常表が起こった場合のエラー
+            errorNotifier.assign('規則に反するローマ数字です');
             print('異常表');
             state = null;
             return;
@@ -189,11 +192,10 @@ class AnswerNotifier extends _$AnswerNotifier {
         } else {
           sum += rSymProvider.I;
         }
-      }
-      //定義されていない文字の時
+      } //定義されていない文字の時
       else {
-        //#TODO エラー文表示
-        print('ローマ数じゃないよ');
+        //定義されていない文字のエラー
+        errorNotifier.assign('ローマ数字ではありません');
         state = null;
         return;
       }
@@ -206,8 +208,8 @@ class AnswerNotifier extends _$AnswerNotifier {
           xTimes >= 4 ||
           vTimes >= 4 ||
           iTimes >= 4) {
-        //#TODO エラー文表示
-        print('異常表');
+        //異常表が起こった場合のエラー
+        errorNotifier.assign('規則に反するローマ数字です');
         state = null;
         return;
       }

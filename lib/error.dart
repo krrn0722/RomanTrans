@@ -7,4 +7,8 @@ class ErrorNotifier extends _$ErrorNotifier {
   String build() {
     return '';
   }
+
+  void assign(String st) {
+    state = st;
+  }
 }
