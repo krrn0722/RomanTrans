@@ -68,7 +68,7 @@ class CalculatePage extends HookConsumerWidget {
                 null => SingleChildScrollView(
                     child: Text(
                       '$errorProvider',
-                      style: const TextStyle(fontSize: 20),
+                      style: const TextStyle(color: Colors.red, fontSize: 20),
                       overflow: TextOverflow.visible,
                     ),
                   ),
