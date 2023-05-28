@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:roman_num/answer.dart';
+import 'package:roman_num/error.dart';
 
 class CalculatePage extends HookConsumerWidget {
   const CalculatePage({super.key});
@@ -12,30 +13,54 @@ class CalculatePage extends HookConsumerWidget {
     final controller = useTextEditingController();
     final ansProvider = ref.watch(answerNotifierProvider);
     final ansNotifier = ref.read(answerNotifierProvider.notifier);
+    final errorProvider = ref.watch(errorNotifierProvider);
     return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              L10n.of(context)!.hello,
+              'ローマ数字',
+              style: const TextStyle(
+                  fontSize: 20, color: Color.fromARGB(200, 40, 40, 40)),
             ),
-            TextField(
-              controller: controller,
-              decoration: const InputDecoration(
-                  border: InputBorder.none, hintText: '整数を入力して'),
-              maxLength: 21,
+            const SizedBox(height: 10),
+            SizedBox(
+              width: 300,
+              child: TextField(
+                controller: controller,
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(), hintText: 'ローマ数字を入力してください'),
+                style: const TextStyle(fontSize: 30),
+                maxLength: 21,
+              ),
             ),
             ElevatedButton(
                 onPressed: () {
                   ansNotifier.transNum(controller.text);
                 },
-                child: Text('計算')),
-            //数字がヌルの場合は空のコンテナ
-            switch (ansProvider) {
-              int() => Text('$ansProvider'),
-              null => SizedBox(),
-            }
+                child: Text('変換')),
+            SizedBox(height: 40),
+            Text('結果',
+                style: const TextStyle(
+                    fontSize: 20, color: Color.fromARGB(200, 40, 40, 40))),
+            //数字がヌルの場合はエラー文
+            const SizedBox(height: 10),
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey),
+                borderRadius: BorderRadius.circular(5),
+              ),
+              width: 300,
+              height: 80,
+              padding: EdgeInsets.all(20),
+              child: switch (ansProvider) {
+                int() =>
+                  Text('$ansProvider', style: const TextStyle(fontSize: 30)),
+                null =>
+                  Text('$errorProvider', style: const TextStyle(fontSize: 30)),
+              },
+            )
           ],
         ),
       ),
