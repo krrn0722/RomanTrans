@@ -4,7 +4,7 @@ part 'error.g.dart';
 @riverpod
 class ErrorNotifier extends _$ErrorNotifier {
   @override
-  String? build() {
-    return null;
+  String build() {
+    return '';
   }
 }
