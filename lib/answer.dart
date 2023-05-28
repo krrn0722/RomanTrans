@@ -17,6 +17,7 @@ class AnswerNotifier extends _$AnswerNotifier {
     //空ならnull
     if (roman.isEmpty) {
       state = null;
+      errorNotifier.assign('');
       return;
     }
     int sum = 0;
