@@ -39,6 +39,7 @@ dependencies:
   hooks_riverpod:
   riverpod_annotation:
   freezed_annotation:
+  device_preview:
 
 dev_dependencies:
   flutter_test:
