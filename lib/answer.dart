@@ -20,6 +20,8 @@ class AnswerNotifier extends _$AnswerNotifier {
       errorNotifier.assign('');
       return;
     }
+    //文字の前後にある空白を取り除く
+    roman = roman.trim();
     int sum = 0;
     int len = roman.length;
     int mTimes = 0,
