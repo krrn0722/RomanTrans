@@ -20,6 +20,7 @@ class CalculatePage extends HookConsumerWidget {
     final widthRatio = screenSize.width / 390;
 
     return Scaffold(
+        //キーボード外をタップ
         body: GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () => FocusScope.of(context).unfocus(),
@@ -33,6 +34,7 @@ class CalculatePage extends HookConsumerWidget {
                   fontSize: 20, color: Color.fromARGB(200, 40, 40, 40)),
             ),
             const SizedBox(height: 10),
+            //テキストフィールド
             SizedBox(
               width: 300 * widthRatio,
               child: TextField(
@@ -58,6 +60,7 @@ class CalculatePage extends HookConsumerWidget {
                     fontSize: 20, color: Color.fromARGB(200, 40, 40, 40))),
             //数字がヌルの場合はエラー文
             const SizedBox(height: 10),
+            //結果出力部分
             Container(
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.grey),
@@ -67,8 +70,10 @@ class CalculatePage extends HookConsumerWidget {
               height: 80,
               padding: EdgeInsets.all(20),
               child: switch (ansProvider) {
+                //正常に値が入ってきた場合
                 int() =>
                   Text('$ansProvider', style: const TextStyle(fontSize: 30)),
+                //エラー
                 null => SingleChildScrollView(
                     child: Text(
                       '$errorProvider',
