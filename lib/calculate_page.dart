@@ -36,6 +36,8 @@ class CalculatePage extends HookConsumerWidget {
               ),
             ),
             ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    fixedSize: const Size.fromWidth(200)),
                 onPressed: () {
                   ansNotifier.transNum(controller.text);
                 },
