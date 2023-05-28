@@ -24,6 +24,7 @@ class CalculatePage extends HookConsumerWidget {
               controller: controller,
               decoration: const InputDecoration(
                   border: InputBorder.none, hintText: '整数を入力して'),
+              maxLength: 21,
             ),
             ElevatedButton(
                 onPressed: () {
