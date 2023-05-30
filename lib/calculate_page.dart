@@ -44,7 +44,7 @@ class CalculatePage extends HookConsumerWidget {
                     hintText: l10n.enterRomanNum,
                     hintStyle: const TextStyle(fontSize: 20)),
                 style: const TextStyle(fontSize: 30),
-                maxLength: 21,
+                maxLength: 15,
               ),
             ),
             ElevatedButton(
