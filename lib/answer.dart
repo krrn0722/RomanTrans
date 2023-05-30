@@ -31,6 +31,8 @@ class AnswerNotifier extends _$AnswerNotifier {
         xTimes = 0,
         vTimes = 0,
         iTimes = 0;
+    //小文字を大文字に変換する
+    roman = roman.toUpperCase();
     //最後尾に空白を追加
     roman = roman.padRight(len + 1);
     roman = roman.padRight(len + 2);
