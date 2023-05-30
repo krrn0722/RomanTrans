@@ -207,14 +207,14 @@ class AnswerNotifier extends _$AnswerNotifier {
       //４回以上繰り返すと
       print(mTimes);
       if (mTimes >= 4 ||
-          dTimes >= 4 ||
+          dTimes >= 2 ||
           cTimes >= 4 ||
-          lTimes >= 4 ||
+          lTimes >= 2 ||
           xTimes >= 4 ||
-          vTimes >= 4 ||
+          vTimes >= 2 ||
           iTimes >= 4) {
         //異常表が起こった場合のエラー
-        errorNotifier.assign('規則に反するローマ数字です');
+        errorNotifier.assign('同じローマ数字の繰り返しが多すぎます');
         state = null;
         return;
       }
