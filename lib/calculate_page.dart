@@ -68,7 +68,7 @@ class CalculatePage extends HookConsumerWidget {
               ),
               width: 300 * widthRatio,
               height: 80,
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: switch (ansProvider) {
                 //正常に値が入ってきた場合
                 int() =>
@@ -76,7 +76,7 @@ class CalculatePage extends HookConsumerWidget {
                 //エラー
                 null => SingleChildScrollView(
                     child: Text(
-                      '$errorProvider',
+                      errorProvider,
                       style: const TextStyle(color: Colors.red, fontSize: 20),
                       overflow: TextOverflow.visible,
                     ),
