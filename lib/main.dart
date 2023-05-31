@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:roman_num/calculate_page.dart';
+import 'package:roman_num/calculate/calculate_page.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));

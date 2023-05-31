@@ -1,25 +1,25 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'answer.dart';
+part of 'error.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$answerNotifierHash() => r'e7a0ee7bbd0f2427a792deaccd86b912310229e8';
+String _$errorNotifierHash() => r'02a82e4d7cb90efe78fca8bf887bf8ac2758618a';
 
-/// See also [AnswerNotifier].
-@ProviderFor(AnswerNotifier)
-final answerNotifierProvider =
-    AutoDisposeNotifierProvider<AnswerNotifier, int?>.internal(
-  AnswerNotifier.new,
-  name: r'answerNotifierProvider',
+/// See also [ErrorNotifier].
+@ProviderFor(ErrorNotifier)
+final errorNotifierProvider =
+    AutoDisposeNotifierProvider<ErrorNotifier, String>.internal(
+  ErrorNotifier.new,
+  name: r'errorNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$answerNotifierHash,
+      : _$errorNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$AnswerNotifier = AutoDisposeNotifier<int?>;
+typedef _$ErrorNotifier = AutoDisposeNotifier<String>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

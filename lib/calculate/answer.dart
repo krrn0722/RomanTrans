@@ -1,6 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:roman_num/error.dart';
-import 'package:roman_num/roman_symbol.dart';
+import 'package:roman_num/calculate/error.dart';
+import 'package:roman_num/calculate/roman_symbol.dart';
 part 'answer.g.dart';
 
 @riverpod
